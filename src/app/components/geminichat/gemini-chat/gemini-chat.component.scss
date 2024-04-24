@@ -1,0 +1,39 @@
+.chat-booble-container{
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+}
+.chat-booble-container.sender{
+  justify-content: flex-end;
+}
+.chat-booble-container.sender > .chat-bubble{
+  background: #cceff0;
+}
+.chat-bubble{
+  background: white;
+  padding-top: 8px;
+  padding-right: 100px;
+  padding-bottom: 18px;
+  padding-left: 8px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  width: fit-content;
+ position: relative;
+
+ .chat-date{
+  position: absolute;
+  bottom:2px;
+  right:8px;
+  font-size:0.7rem
+ }
+}
+.chat-area{
+
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  :first-child{
+    margin-top: auto;
+  }
+}
+

@@ -1,0 +1,85 @@
+<div class="flex flex-col justify-between">
+  <div
+    class="md:rounded-lg bg-secondary z-10 flex justify-center md:items-center min-h-[100vh]"
+  >
+    <div
+      class="bg-white   md:p-10 w-[100%] md:w-[90%] flex flex-col md:my-5 md:border-4 border-primary h-auto"
+    >
+      <span class="px-5 pt-5"
+        ><span class="text-3xl mr-2">Shopping </span>
+        <span class="text-3xl font-semibold text-primary">
+          Cart
+        </span></span
+      >
+     @if (cartStore.products().length ===0) {
+        <span class="text-xl px-5  p-1">Cart is Empty</span>
+     }
+     @else{
+      <span class="text-secondary  px-5  p-1">You have {{cartStore.products().length}} in your cart</span>
+      <div class="flex flex-col  items-center md:flex-row flex-wrap mt-10">
+        <div class="flex flex-col w-[100%] md:w-[67%] h-[25rem] overflow-y-scroll relative ">
+          <div class="grid grid-cols-10 items-center p-2 w-[100%] bg-white sticky top-0">
+            <span class="col-span-1 text-sm hidden md:block text-secondary">Image</span>
+            <span class="md:col-span-5   col-span-5 text-sm text-secondary">Product Info</span>
+            <span class="col-span-1 text-sm   hidden md:block text-secondary">Quantity</span>
+            <span class="col-span-2 text-sm   hidden md:block justify-self-center text-secondary">Total Cost </span>
+            <span class=" col-span-5 md:col-span-1  text-sm justify-self-end md:justify-self-start text-secondary">Remove</span>
+          </div>
+          @for (item of cartStore.products(); track $index) {
+            <div
+            class="grid   mt-4 px-2 py-5 grid-cols-10 items-center md:p-2 w-[100%] transition ease-in-out delay-200 hover:scale-95 bg-secondary rounded-md "
+          >
+            <img
+              [src]="item.productImgPath"
+              alt=""
+              srcset=""
+              class="h-8 md:h-10 col-span-1"
+            />
+            <div class="col-span-5">
+              <h2 class="text-sm md:text-lg text-white">{{item.title}}</h2>
+              <span class="text-sm text-gray-100">category</span>
+            </div>
+            <div class="col-span-1 text-[0.8rem] gap-1 md:text-sm  flex justify-evenly items-center">
+              <span (click)="decrement(item.id)"> <i class="pi pi-minus " style="color: #ffffff;" ></i></span>
+              <span class="bg-primaryS1 flex  justify-center items-center text-white rounded-xl w-[2.5rem] md:w-[2rem]">{{item.quantity}}</span>
+              <span (click)="increment(item.id)"> <i class="pi pi-plus" style="color: rgb(255, 255, 255);"></i></span>
+            </div>
+            <div class="col-span-2 text-sm md:text-md font-bold justify-self-center text-white">{{item.price}}</div>
+            <div class="col-span-1 text-sm justify-self-center cursor-pointer" (click)="remove(item)">
+              <i class="pi pi-times" style="color: red"></i>
+            </div>
+          </div>
+          }
+        </div>
+        <div class="flex flex-col  md:w-[30%] bg-secondary mt-4 mb-9  ms-4 md:my-4 p-2 h-[17rem] rounded-lg">
+          <div class="flex justify-evenly">
+            <input type="text" name="" id="" class="p-2 border-2 text-white rounded-md border-primary bg-transparent " placeholder="Enter a Promo Code">
+            <button class="border-2 border-primary rounded-md p-2 text-primary bg-transparent font-bold">Apply</button>
+          </div>
+          <div class="flex justify-between mt-5 ">
+            <span class="text-sm text-white">SubToTal:</span>
+            <span class="text-sm text-white">{{cartStore.totalPrice() | currency}}</span>
+          </div>
+          <div class="flex justify-between mt-5">
+            <span class="text-sm text-white" >Tax:</span>
+            <span class="text-sm text-white">0</span>
+          </div>
+          <div class="flex justify-between mt-5">
+            <span class="text-lg text-white">Total:</span>
+            <span class="text-lg text-white">{{cartStore.totalPrice() | currency}}</span>
+          </div>
+          <div class="mt-5 mx-auto ">
+            <button class="bg-primary transition ease-in-out delay-150 hover:scale-110 text-secondary font-bold p-2 rounded-md" [routerLink]="'/payment'" >Proceed to Payment</button>
+          </div>
+
+
+
+        </div>
+      </div>
+     }
+    </div>
+  </div>
+  <div class="md:hidden">
+    <app-bootom-navigation />
+  </div>
+</div>

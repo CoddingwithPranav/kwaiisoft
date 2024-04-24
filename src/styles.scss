@@ -1,1 +1,75 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  $primary:#00F407;
+  $secondary: #001122;
+  $base:#e8e8e8;
+}
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+/* Order */
+// @layer reset, primeng;
+
+// /* Reset CSS */
+// @layer reset {
+//     button,
+//     input {
+//         /* CSS to Reset */
+//     }
+// }
+// @layer primeng {
+//   .p-inputtext {
+//     margin: 0;
+//     width:77vw ;
+//     border-radius: 67px !important;
+//     padding: 20px;
+//   }
+// }
+
+@layer primeng {
+  .p-inputtext {
+    margin: 0;
+    width: 100%;
+ 
+  }
+  .p-autocomplete{
+    width: 100%;
+  }
+  input:focus-visible{
+    outline: none;
+  }
+}
+
+/* For WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  // ::-webkit-scrollbar-track {
+  //   background-color: rgb(218, 218, 218);
+  // }
+  
+  ::-webkit-scrollbar-thumb {
+    // box-shadow: inset 0 0 6px rgba(71, 71, 71, 0.3);
+    background-color: rgba(76, 76, 76, 0.272);
+  }
+  
+  /* For Firefox */
+  /* Note: Firefox does not support styling the track directly */
+  /* Styling the scrollbar thumb in Firefox */
+  * {
+    scrollbar-color:  rgb(202, 201, 201) rgb(251, 249, 249);
+    scrollbar-width: 4px;
+  
+  }
+  

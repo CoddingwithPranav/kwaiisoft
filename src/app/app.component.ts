@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-
+import {  Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { UserStore } from './store/user.store';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -10,5 +11,26 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'kwaiisoft';
+Store = inject(UserStore)
+  constructor(private Auth:AuthService, private router:Router){
+   if(typeof document != 'undefined'){
+
+     this.Store.loadUser('');
+   }
+    this.Auth.currentUser$.subscribe((res:any)=>{
+      if(typeof document != 'undefined'){
+        if(res != null){
+          let url = window.location.pathname
+          
+           this.router.navigate([url])
+          }
+          else{
+           this.router.navigate(['auth/login'])
+         }
+      }
+    })
+   
+  }
+
+
 }

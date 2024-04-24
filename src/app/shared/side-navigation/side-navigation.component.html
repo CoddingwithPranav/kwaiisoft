@@ -1,0 +1,67 @@
+<!-- <svg class="h-[627px] w-[355px] absolute top-0 left-0 z-0" viewBox="0 0 464 919" fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M0 72C0 32.2355 32.2355 0 72 0C111.765 0 144 32.2355 144 72V135.75V267.5V431.421C144 455.531 144 467.586 146.992 478.766C149.644 488.672 154.006 498.039 159.883 506.442C166.515 515.927 175.743 523.684 194.199 539.199L271.285 603.999C279.34 610.77 283.367 614.155 287.641 616.973C299.121 624.54 312.213 629.312 325.87 630.906C330.955 631.5 336.216 631.5 346.739 631.5C373.951 631.5 387.557 631.5 398.721 634.484C429.134 642.612 452.888 666.366 461.016 696.779C464 707.943 464 721.549 464 748.761V781C464 827.645 464 850.967 455.382 868.979C446.712 887.102 432.102 901.712 413.979 910.382C395.967 919 372.645 919 326 919H259.666C233.942 919 221.08 919 210.492 916.331C179.096 908.418 154.582 883.904 146.669 852.508C144 841.92 144 829.058 144 803.334V762.268C144 722.234 112.025 689.528 72 688.625C31.9754 687.722 0 655.016 0 614.982L0 72Z"
+      fill="#F5F5FC" />
+  </svg> -->
+<div class="sticky top-0 ">
+
+  <div
+    class= " h-auto rounded-full mb-5 bg-white border-4 border-secondary  w-[98%] flex justify-center  flex-col items-center overflow-hidden z-20    ">
+    <div class="h-[16rem] w-[90%] flex justify-around items-center flex-col ">
+       <button>
+        <i class="pi pi-home font-medium" style="font-size: 1.4rem" [routerLink]="['home']"  routerLinkActive="text-secondary  shadow-lg shadow-primary/50 rounded-full h-[2.5rem] p-2  drop-shadow-2xl"></i>
+       </button>
+       <button>
+        <i class="pi pi-comments font-medium" style="font-size: 1.4rem" [routerLink]="['chat']"  routerLinkActive="text-secondary shadow-lg shadow-primary/50 rounded-full h-[2.5rem] p-2  drop-shadow-2xl"></i>
+       </button>
+       <button>
+        <i class="pi pi-microchip-ai font-medium" style="font-size: 1.4rem" [routerLink]="['ai']"  routerLinkActive="text-secondary shadow-lg shadow-primary/50 rounded-full h-[2.5rem] p-2  drop-shadow-2xl"></i>
+       </button>
+       <button>
+        <i class="pi pi-shopping-cart font-medium" style="font-size: 1.4rem" [routerLink]="['shop']"  routerLinkActive="text-secondary shadow-lg shadow-primary/50 rounded-full h-[2.5rem] p-2  drop-shadow-2xl"></i>
+       </button>
+    </div>
+ <div class="relative" id="top">
+  <div class="rounded-full flex " id="backgroudofProfile">
+
+  </div>
+  <div class=" rounded-full  bg-secondary flex flex-col " id="profile">
+
+
+   <div class=" flex justify-center items-center h-1/2 border-b-2 ">
+       <div class="w-[80%] h-[75%]" [routerLink]="['profile']" >
+         <app-profile></app-profile>
+       </div>
+   </div>
+   <div class=" relative flex justify-between h-1/2  "[routerLink]="'wishlist'">
+
+    <i class="pi pi-heart-fill m-auto h-10 text-white" style="font-size: 1.9rem" ></i>
+     @if ((wishlistStore.products().length > 0)) {
+      <div
+      class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full top-1 -end-1 dark:border-gray-900">
+      {{wishlistStore.products().length}}</div>
+     }
+
+  </div>
+
+
+
+ </div>
+ </div>
+
+  </div>
+  <div class="h-[10%] rounded-full z-20  w-[7vw]  flex justify-center flex-col items-center ">
+    <span class="h-[3.5rem] flex justify-center items-center rounded-full mb-3 mt-2 w-[3.5rem] bg-gray-100  border-2 border-secondary">
+      <i class="pi pi-gift" style="font-size: 1.5rem"></i>
+    </span>
+    <span class="h-[5rem]  flex justify-center items-center rounded-full mb-5  w-[2.5rem] bg-gray-100">
+
+      <label class="  rotate-90 relative h-full  inline-flex items-center cursor-pointer ">
+        <input type="checkbox" value="" class="sr-only peer">
+        <div class="w-[5rem] h-[2.8rem] bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[23px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-[2.1rem] after:w-[2.1rem] after:transition-all dark:border-gray-600 peer-checked:bg-secondary"></div>
+      </label>
+
+    </span>
+  </div>
+</div>

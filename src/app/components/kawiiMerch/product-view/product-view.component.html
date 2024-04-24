@@ -1,0 +1,86 @@
+<div class="flex flex-col justify-between">
+  <div
+    class=" bg-secondary p-2 md:p-20 backdrop-blur-sm flex flex-col h-[max-content]"
+  >
+    <div [routerLink]="'/kwaii/shop'" class="cursor-pointer  bg-primary text-secondary p-2 rounded-xl"><i class="pi pi-chevron-left" style="font-size: 1rem" ></i> Back</div>
+    @if(productStore.viewProduct().productImgPath){ 
+    <div class="flex flex-col md:flex-row mt-2">
+      <div class="p-3 drop-shadow-2xl">
+        
+
+          <img alt="Product preview image" [src]="productStore.viewProduct().productImgPath" width="400" height="200" class="aspect-video h-[20rem] md:w-[68rem]" priority>
+       
+      </div>
+      <div class="p-2">
+        <div class="mt-2">
+          <span
+            class="bg-white text-secondary text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300"
+            >category</span
+          >
+        </div>
+        <div class="mt-2 text-xl font-bold text-primary">{{productStore.viewProduct().title}}</div>
+        <div class="flex justify-between mt-2">
+          <span
+            ><span class="text-xl text-white">${{productStore.viewProduct().price}}</span>
+            <span class="text-lg decoration-slice text-white"
+              >${{productStore.viewProduct().price - productStore.viewProduct().discount}}</span
+            ></span
+          >
+          <span
+            class="bg-green-100 ml-auto flex text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded border border-green-400"
+          >
+          <i class="pi pi-star-fill h-5 w-5 text-green-500 font-bold" ></i>
+          14.29% off</span>
+          >
+        </div>
+
+        <div class="mt-2 text-white">
+          {{productStore.viewProduct().description}}
+        </div>
+
+        <div class="flex justify-between mt-2">
+          <div class="text-sm flex justify-evenly items-center">
+            <span> <i class="pi pi-minus text-white" ></i></span>
+            <span
+              class="bg-primaryS1 mx-2 flex justify-center items-center text-white rounded-xl w-[2.5rem] md:w-[2rem]"
+              >1</span
+            >
+            <span> <i class="pi pi-plus text-white" ></i></span>
+          </div>
+          <div class="text-2xl text-white">${{productStore.viewProduct().price}}</div>
+        </div>
+        <hr>
+        <div class="flex justify-between mt-4 md:mt-2 ">
+          <button
+            type="button"
+            class="focus:outline-none w-full  text-secondary bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
+          >
+          <i class="pi pi-heart-fill" style="color: rgb(255, 255, 255)"></i>   WishListed
+          </button>
+          <button
+            type="button"  [routerLink]="'kwaii/cart'"
+            class="focus:outline-none w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+          >
+          <i class="pi pi-shopping-cart" style="color: rgb(255, 255, 255)"></i>     Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="mt-5 p-2">
+      <div class="font-bold text-xl text-primary">Product Details</div>
+      <div class="mt-2 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, consectetur reprehenderit a harum omnis quibusdam, eveniet officia placeat aspernatur ducimus esse minus deserunt commodi tempore aliquam architecto, facere sapiente assumenda repellat quaerat! Sequi, maiores?</div>
+    </div>
+  }@else{
+    <div class="  spinner flex justify-center items-center h-[95vh] ">
+      <p-progressSpinner
+        styleClass="h-20 w-20 font-bold"
+        animationDuration=".5s"
+      ></p-progressSpinner>
+
+    </div>
+  }
+  </div>
+  <div class="md:hidden">
+    <app-bootom-navigation />
+  </div>
+</div>

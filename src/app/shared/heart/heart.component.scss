@@ -1,0 +1,31 @@
+// TWITTER HEART
+.heart {
+  width: 100px;
+  height: 100px;
+  background: url("../../../assets/icons/heart.png") no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  transition: background-position 1s steps(28);
+  transition-duration: 0s;
+
+  &.is-active {
+    transition-duration: 1s;
+    background-position: -2800px 0;
+  }
+}
+
+// // BASIC
+// body {
+//   background: linear-gradient(135deg, #121721 0%, #000000 100%) fixed;
+//   color: #FFF;
+//   font: 300 16px/1.5 "Open Sans", sans-serif;
+// }
+
+.stage {
+  position: absolute;
+  // top: 50%;
+  left: -25px;
+  // left: 50%;
+  z-index: 1;
+  // transform: translate(-50%, -50%);
+}

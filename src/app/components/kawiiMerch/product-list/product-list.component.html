@@ -1,0 +1,139 @@
+<div class="flex flex-col relative bg-secondary rounded-2xl h-[100%]">
+  <div class="md:h-[100%] h-[90%]">
+    <div class="sticky top-0 z-10 bg-white">
+      <div class="w-full flex-col px-5 md:px-10 py-5 flex">
+        <div class="flex justify-between">
+          <div class="text-3xl text-secondary font-bold">Our Product</div>
+          <div class="  ">
+            <button
+              class="relative inline-flex shadow-lg shadow-primary/50 rounded-full justify-between items-center w-[2.5rem] h-[2.8rem] p-[0.6rem] mr-2"
+              routerLink="/kwaii/cart"
+            >
+              <i class="pi pi-cart-plus" style="font-size: 20px"></i>
+              <div
+                class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-1 -end-1 dark:border-gray-900"
+              >
+                {{ UserStore.cart().length }}
+              </div>
+            </button>
+            <button
+              class="relative md:hidden inline-flex shadow-lg shadow-primary/50 rounded-full justify-between items-center w-[2.5rem] h-[2.8rem] p-[0.6rem]"
+              routerLink="/kwaii/wishlist"
+            >
+              <i class="pi pi-heart-fill" style="font-size: 20px"></i>
+              @if ((wishlistStore.products().length > 0)) {
+                
+                <div
+                  class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-1 -end-1 dark:border-gray-900"
+                >
+                {{wishlistStore.products().length}}
+                </div>
+              }
+            </button>
+          </div>
+        </div>
+        <div class="flex mt-5 justify-around">
+          <div
+            class="search flex shadow-lg shadow-primary/50 border-2 border-primary"
+          >
+            <p-autoComplete
+              [(ngModel)]="selectedItem"
+              [suggestions]="suggestions"
+              (completeMethod)="search($event)"
+              placeholder="Search Here"
+              field="Search Product"
+            ></p-autoComplete>
+            <!-- <p-autoComplete [(ngModel)]="selectedItem" [suggestions]="suggestions"
+    (completeMethod)="search($event)" field="name">
+        <ng-template let-country pTemplate="item">
+            <div class="flex align-items-center gap-2">
+                <img src="../../../../assets/icons/searchIcon.png" [class]="'flag flag-' + country.code.toLowerCase()" style="width: 18px"/>
+                <div>{{ country.name }}</div>
+            </div>
+        </ng-template>
+</p-autoComplete> -->
+            <div
+              class="filter md:ms-2 shadow-lg shadow-primary/50 flex justify-center items-center border bg-primaryS2 text-white text-sm md:text-lg font-medium rounded-full px-2"
+            >
+              <i class="pi pi-filter hidden md:block"></i>
+              <span class="text-secondary font-medium">Filter</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full px-5 md:px-10 relative">
+      
+
+      <ng-container *ngIf="productStore.products().length >0; else elseblock">
+        <div class="grid grid-cols-1 text-xl my-2 md:mx-2 text-primary">
+          Filter By Category
+        </div>
+        <div class="flex items-center mt-2 mx-2 overflow-scroll md:overflow-auto">
+          <span
+            class="bg-secondary border-2 border-white text-white text-lg font-medium me-2 px-2.5 py-0.5 rounded-full"
+            >Green</span
+          >
+          <span
+            class="bg-primary border-2 text-secondary text-lg font-medium me-2 px-3.5 py-0.5 rounded-full"
+            >Selected</span
+          >
+          <span
+            class="bg-secondary border-2 border-white text-white text-lg font-medium me-2 px-3.5 py-0.5 rounded-full"
+            >Laptop</span
+          >
+          <span
+            class="bg-secondary border-2 border-white text-white text-lg font-medium me-2 px-3.5 py-0.5 rounded-full"
+            >Sticker</span
+          >
+          <span
+            class="bg-secondary border-2 border-white text-white text-lg font-medium me-2 px-3.5 py-0.5 rounded-full"
+            >watch</span
+          >
+          <span
+            class="bg-secondary border-2 border-white text-white text-lg font-medium me-2 px-3.5 py-0.5 rounded-full"
+            >Mobile</span
+          >
+        </div>
+        <div class="flex flex-wrap justify-center">
+          @for (item of productStore.products(); track $index) {
+          <app-card
+            [item]="item"
+            (handlerAdd)="addToCart($event)"
+            (handlerwishList)="addToWishList($event)"
+          ></app-card>
+          }
+        </div>
+      </ng-container>
+      <ng-template #elseblock > 
+        <div class="  spinner flex justify-center items-center ">
+          <p-progressSpinner
+            styleClass="h-20 w-20 font-bold"
+            animationDuration=".5s"
+          ></p-progressSpinner>
+
+        </div>
+      </ng-template>
+      <!-- @if (productStore.products().length > 1) {
+  <div class="flex flex-wrap justify-center">
+    @for (item of productStore.products(); track $index) {
+    <app-card
+      [item]="item"
+      (handlerAdd)="addToCart($event)"
+      (handlerwishList)="addToWishList($event)"
+    ></app-card>
+    } 
+  </div>
+} @else {
+  
+  <p-progressSpinner
+  styleClass="h-20 w-20 font-bold"
+  animationDuration=".5s"
+></p-progressSpinner>
+} -->
+    </div>
+  </div>
+  <div class="md:hidden h-[10%]">
+    <app-bootom-navigation />
+  </div>
+</div>

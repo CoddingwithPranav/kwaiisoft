@@ -1,0 +1,17 @@
+<div class="relative h-full w-full">
+  <img class="object-contain object-center h-full w-full rounded-full cursor-pointer  " [src]="this.url !='' ?this.url:UserStore.user().profileImg || '../../../assets/Svg/defaultUser.svg'" alt="profile Image" fetchpriority='high' >
+
+@if(showActiveIcon){
+  <span
+  class="top-1 md:top-2 left-10 md:left-12 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+
+}
+@if(isEdit){
+  <span
+  class="top-[50%] cursor-pointer left-[73%] absolute w-[30px] md:w-[35px] md:h-[35px] bg-white rounded-full p-1.5 ">
+  <i class="pi pi-pencil hover:text-lg" style="font-size: 1.3rem"></i>
+</span>
+
+}
+
+</div>

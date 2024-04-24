@@ -1,0 +1,57 @@
+
+
+@keyframes spin {
+  100% {
+      transform: rotate(-360deg);
+  }
+}
+
+
+
+
+#profile{
+  width: 4.5rem;;
+  height:10rem;
+  z-index: 11;
+  margin: auto;
+  position: absolute;
+  top: 9px;
+  left: 4px;
+
+}
+
+#top:hover{
+  cursor: pointer;
+  #backgroudofProfile{
+    opacity: 1;
+  }
+}
+
+#backgroudofProfile{
+  width: 5rem;
+  height: 11rem;
+  opacity: 0;
+ position: relative;
+ top: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#backgroudofProfile:before {
+  content: "";
+  height: 250%;
+  width: 210%;
+  position: absolute;
+  background: conic-gradient(
+      #fd004c,
+      #fe9000,
+      #fff020,
+      #3edf4b,
+      #3363ff,
+      #b102b7,
+      #fd004c
+  );
+  left: -50%;
+  top: -49%;
+  animation: spin 1.5s infinite linear;
+}

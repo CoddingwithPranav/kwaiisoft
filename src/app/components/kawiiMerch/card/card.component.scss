@@ -1,0 +1,76 @@
+
+// .card{
+//   margin: 1rem;
+//   border-radius: 0.5rem;
+//   background-color: rgb(247, 247, 247);
+//   padding: 1rem;
+//   .header{
+//      display: flex;
+//      justify-content: center;
+//      align-items: center;
+
+//     img{
+//       width: 100%;
+//       aspect-ratio: 1/1;
+//       object-fit: cover;
+//     }
+//   }
+
+//   .body{
+//     margin-bottom: 8px;
+//      span{
+//       font-size: 13px;
+//   font-weight: bold;
+//   color: gray;
+//   padding: 4px;
+//      }
+//      h1{
+//       font-size: 25px;
+//   margin-bottom: 0.5rem;
+//   font-weight: initial;
+//   color: #222831;
+//      }
+//      p{
+//       font-size: 13px;
+//   font-weight: initial;
+//   color: #7d7d7d;
+//   word-wrap: break-word;
+//      }
+//      div{
+//       display: flex;
+//       align-items: center;
+//       margin: 6px 0 -2px 0;
+//       h2{
+//         font-size: 16px;
+//         color: #222831;
+//       }
+
+//       .fullPrice{
+//         text-decoration: line-through;
+//         color: #b7b7b7;
+//       }
+//      }
+//   }
+//   .footer{
+//     border-top: 1px solid gray;
+//     display: flex;
+//     align-items: center;
+//     justify-content:space-between;
+//     .btn{
+//       margin-top: 6px;
+//       margin-bottom: 6px;
+//       padding: 10px;
+//       border-radius: 5px;
+//       font-size: 14px;
+//       cursor: pointer;
+//     }
+
+//      .delete{
+//       color: red;
+//      }
+//   }
+// }
+.backimg{
+  aspect-ratio: 2/3;
+  height: 25rem;
+}

@@ -1,0 +1,32 @@
+<div class="flex flex-col justify-between">
+  <div
+    class="rounded-lg bg-secondary backdrop-blur-sm flex justify-center items-center min-h-[100vh]"
+  >
+    <div
+      class="rounded-xl w-[100%] bg-secondary relative md:w-[95%] flex  flex-col border-2 border-primary "
+    >
+      <div class="sticky bg-white top-0 p-5 z-20">
+        <h2 class="inline-block mr-2 text-xl">Wishlist</h2>
+        <h2 class="inline-block font-semibold text-primary text-xl">Products</h2>
+      </div>
+
+      <div class="flex flex-wrap justify-center z-10">
+        @if(wishlistStore.products().length == 0){
+          <div class="bg-secondary p-20">
+           <span class="text-2xl text-white">WishList </span>
+          <span class="text-2xl text-primary">Empty</span>
+          </div>
+        }
+        @for (item of wishlistStore.products(); track $index) {
+        <app-card
+          [item]="item"
+          (handlerwishList)="removeWishlist($event)"
+        ></app-card>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="md:hidden">
+    <app-bootom-navigation />
+  </div>
+</div>
