@@ -57,6 +57,9 @@ export class ProductService {
     const productRef = doc(userCartRef, productId);
 
     const productData = { ...product };
+    productData.Incart = true
+ 
+    
     return from(setDoc(productRef, productData));
     // return this.userService.currentUser$.pipe(
     //   take(1),
@@ -85,6 +88,7 @@ export class ProductService {
     const productRef = doc(userCartRef, productId);
 
     const productData = { ...product };
+    productData.IsWishlisted = true;
     return from(setDoc(productRef, productData));
     // return this.userService.currentUser$.pipe(
     //   take(1),
@@ -138,6 +142,8 @@ export class ProductService {
       'wishlist'
     );
     const productRef = doc(userCartRef, productId);
+    console.log(productId, productRef);
+    
     return from(deleteDoc(productRef));
 
     // return from(deleteDoc(productRef));

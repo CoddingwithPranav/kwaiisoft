@@ -41,10 +41,10 @@ export class LoginComponent {
     this.authService
     .login( email, password)
     .subscribe((res) => {
-      debugger;
+      console.log(res)
       localStorage.setItem('token', JSON.stringify(res.user.uid));
       this.authService.loggedInUser = res.user;
-      this.router.navigate(['kwaii/home']);
+      
     },
     err=>{
       // this.toast.error(err);

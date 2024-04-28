@@ -13,6 +13,7 @@ import { CartStore } from '../../../store/cart.store';
 import { UserStore } from '../../../store/user.store';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { wishListStore } from '../../../store/wishlist.store';
+import { HotToastService } from '@ngneat/hot-toast';
 @Component({
   selector: 'app-product-list',
   standalone: true,
@@ -25,10 +26,13 @@ export class ProductListComponent {
   cartStore = inject(CartStore)
   UserStore = inject(UserStore)
   wishlistStore = inject(wishListStore)
+  toastService = inject(HotToastService)
 
 
 constructor(){
   this.productStore.loadProducts('');
+  console.log(this.productStore.UpdatedProductList());
+   
 }
 
   items!: any[] ;
@@ -45,11 +49,15 @@ constructor(){
  
   }
   addToCart(product:Product){
-   const updatedProduct:Product = {...product};
+   if(product.Incart){
+       this.toastService.warning("Already Added To Cart")
+   }else{
+    const updatedProduct:Product = {...product};
 
    const {id:productId} = updatedProduct;
 
     this.cartStore.addCartProducts({productId, product:updatedProduct})
+   }
   }
 
   addToWishList(product:Product){
@@ -57,6 +65,10 @@ constructor(){
 
     const {id:productId} = updatedProduct;
  
-     this.wishlistStore.addWishListProducts({productId, product:updatedProduct})
+     if(updatedProduct.IsWishlisted){
+      this.wishlistStore.RemovewishlistProducts({productId, product:updatedProduct})
+     }else{
+      this.wishlistStore.addWishListProducts({productId, product:updatedProduct})
+     }
   }
 }

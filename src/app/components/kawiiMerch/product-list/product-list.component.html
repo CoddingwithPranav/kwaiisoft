@@ -96,7 +96,7 @@
           >
         </div>
         <div class="flex flex-wrap justify-center">
-          @for (item of productStore.products(); track $index) {
+          @for (item of productStore.UpdatedProductList(); track $index) {
           <app-card
             [item]="item"
             (handlerAdd)="addToCart($event)"

@@ -4,10 +4,11 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
+import { NgOptimizedImage } from '@angular/common';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, RouterLink, RouterLinkActive, ReactiveFormsModule],
+  imports: [FormsModule, RouterLink, RouterLinkActive, ReactiveFormsModule, NgOptimizedImage],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })

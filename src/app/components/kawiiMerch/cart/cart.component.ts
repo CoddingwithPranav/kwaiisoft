@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../../../models/product';
 import { ProductService } from '../../../services/product.service';
 import { CartStore } from '../../../store/cart.store';
+import { wishListStore } from '../../../store/wishlist.store';
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +16,8 @@ import { CartStore } from '../../../store/cart.store';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnInit{
-cartitem$!:Observable<Product[]>
+cartitem$!:Observable<Product[]>;
+wishlistStore = inject(wishListStore)
 totalPrice$!:Observable<number>;
  cartStore = inject(CartStore);
   ngOnInit(): void {
@@ -29,7 +31,7 @@ totalPrice$!:Observable<number>;
 
     const {id:productId} = updatedProduct
 
-    this.cartStore.RemoveCartProducts({productId, product:updatedProduct})
+    this.wishlistStore.addWishListProducts({productId, product:updatedProduct})
  }
 
 

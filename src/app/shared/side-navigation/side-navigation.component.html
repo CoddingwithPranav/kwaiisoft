@@ -16,7 +16,7 @@
         <i class="pi pi-comments font-medium" style="font-size: 1.4rem" [routerLink]="['chat']"  routerLinkActive="text-secondary shadow-lg shadow-primary/50 rounded-full h-[2.5rem] p-2  drop-shadow-2xl"></i>
        </button>
        <button>
-        <i class="pi pi-microchip-ai font-medium" style="font-size: 1.4rem" [routerLink]="['ai']"  routerLinkActive="text-secondary shadow-lg shadow-primary/50 rounded-full h-[2.5rem] p-2  drop-shadow-2xl"></i>
+        <i class="pi pi-microchip-ai font-medium" style="font-size: 1.4rem" [routerLink]="['gemini']"  routerLinkActive="text-secondary shadow-lg shadow-primary/50 rounded-full h-[2.5rem] p-2  drop-shadow-2xl"></i>
        </button>
        <button>
         <i class="pi pi-shopping-cart font-medium" style="font-size: 1.4rem" [routerLink]="['shop']"  routerLinkActive="text-secondary shadow-lg shadow-primary/50 rounded-full h-[2.5rem] p-2  drop-shadow-2xl"></i>
@@ -37,10 +37,10 @@
    <div class=" relative flex justify-between h-1/2  "[routerLink]="'wishlist'">
 
     <i class="pi pi-heart-fill m-auto h-10 text-white" style="font-size: 1.9rem" ></i>
-     @if ((wishlistStore.products().length > 0)) {
+     @if ((userStore.wishlist().length > 0)) {
       <div
       class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full top-1 -end-1 dark:border-gray-900">
-      {{wishlistStore.products().length}}</div>
+      {{userStore.wishlist().length}}</div>
      }
 
   </div>

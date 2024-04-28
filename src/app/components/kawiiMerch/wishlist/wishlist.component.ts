@@ -4,6 +4,8 @@ import { CardComponent } from '../card/card.component';
 import { Product } from '../../../models/product';
 import { CommonModule } from '@angular/common';
 import { wishListStore } from '../../../store/wishlist.store';
+import { HotToastService } from '@ngneat/hot-toast';
+import { CartStore } from '../../../store/cart.store';
 @Component({
   selector: 'app-wishlist',
   standalone:true,
@@ -13,13 +15,27 @@ import { wishListStore } from '../../../store/wishlist.store';
 })
 export class WishlistComponent {
   wishlistStore = inject(wishListStore)
-  
+  cartStore = inject(CartStore)
+  toastService = inject(HotToastService)
   constructor(){
-   this.wishlistStore.loadWishlistProducts('')
+   this.wishlistStore.loadWishlistProducts('');
   }
 
 
+  addToCart(product:Product){
+    // if(product.Incart){
+    //     this.toastService.warning("Already Added To Cart")
+    // }else{
+    //  const updatedProduct:Product = {...product};
+ 
+    // const {id:productId} = updatedProduct;
+    // updatedProduct.Incart = true;
+ 
+    //  this.cartStore.addCartProducts({productId, product:updatedProduct})
 
+
+    // }
+   }
 
  
     removeWishlist(product:Product){

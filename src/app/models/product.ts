@@ -10,6 +10,7 @@ export interface Product{
   productImgPath:string,
   selectedImage:any;
   isFeatured:boolean,
-  wishlisted:boolean,
+  IsWishlisted?:boolean,
+  Incart?:boolean,
 
 }

@@ -1,10 +1,6 @@
 import { AsyncPipe, NgFor, NgIf, NgClass, DatePipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA, inject } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormControl } from '@angular/forms';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { initFlowbite } from 'flowbite';
 import { combineLatest, startWith, map, Observable } from 'rxjs';
 import { ProfileUser } from '../../../models/user';
 import { ChatsService } from '../../../services/chats.service';
@@ -13,14 +9,20 @@ import { Router, RouterLink } from '@angular/router';
 import { ChartAreaComponent } from '../chart-area/chart-area.component';
 import { SortByDatePipe } from '../../../pipes/date-displaypipe.pipe';
 import { DropdownModule } from 'primeng/dropdown';
-import { AutoCompleteModule } from 'primeng/autocomplete';
+import {  AutoCompleteModule } from 'primeng/autocomplete';
+
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+
+interface AutoCompleteCompleteEvent {
+  originalEvent: Event;
+  query: string;
+}
 
 @Component({
   selector: 'app-friend-list',
   standalone: true,
-  imports: [ MatAutocompleteModule,
-    MatInputModule,
-    MatFormFieldModule,
+  imports: [
     FormsModule,
     ReactiveFormsModule,
     AsyncPipe,
@@ -31,10 +33,13 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     RouterLink,
     ChartAreaComponent,
     DropdownModule,
-    AutoCompleteModule
+    VirtualScrollerModule,
+    AutoCompleteModule,
+    ProgressSpinnerModule
   ],
   templateUrl: './friend-list.component.html',
-  styleUrl: './friend-list.component.scss'
+  styleUrl: './friend-list.component.scss',
+  schemas:[NO_ERRORS_SCHEMA]
 })
 export class FriendListComponent {
 
@@ -88,16 +93,44 @@ export class FriendListComponent {
 
 
 
-  ngOnInit(): void {
-    if (typeof document !== 'undefined') {
-      initFlowbite();
+  createChat(){
+    if(this.selectedItem){
+debugger;
+     this.chatService.createChat(this.selectedItem.value).subscribe();
+
+     this.selectedItem = '';
     }
-
   }
 
-  createChat(otherUser:ProfileUser){
-   this.chatService.createChat(otherUser).subscribe();
+
+
+
+
+  selectedItem: any;
+  filteredItems: any[] = [];
+
+
+  
+
+
+  ngOnInit(): void {
+    this.users$ = this.userServce.allUsers$.pipe(
+      map(users => users.filter(user => user.displayName !== undefined)) // Filter users where displayName is defined
+    );
+   
   }
+
+  filterItems(event: any) {
+    const query = event.query;
+    this.users$.subscribe(users => {
+      this.filteredItems = users.filter((user:any) =>
+        user.displayName.toLowerCase().indexOf(query.toLowerCase()) !== -1
+      ).map((user)=>({label: user.displayName,  value: user}) )
+
+    });
+  }
+
+  
 
 
 

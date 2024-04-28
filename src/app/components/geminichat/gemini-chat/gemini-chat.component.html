@@ -1,11 +1,11 @@
-<div class="flex flex-col justify-between bg-white rounded-2xl h-[100%]">
+<div class="flex flex-col justify-between bg-secondary rounded-2xl h-[100vh]">
 
-  <div class="grid grid-cols-4 h-[90%] md:h-[100%]  ">
-    <div class=" hidden md:grid h-full col-span-1  grid-rows-9 ">
-      <div class="bg-white row-span-5 ">
+  <div class="grid grid-cols-4 h-[90%] md:h-[100%]  z-10  bg-secondary ">
+    <div class=" hidden md:flex items-center justify-center ml-5  h-[100%] grid-rows-9  ">
+      <div class="bg-secondary  ">
 
 
-        <div class="w-full h-full max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
+        <div class="w-full h-full max-w-sm bg-white border border-primary rounded-lg  shadow-lg shadow-primary/90 ">
           <div class="flex justify-end px-4 pt-4">
             <button id="dropdownButton" data-dropdown-toggle="dropdown"
               class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
@@ -38,7 +38,7 @@
             </div>
           </div>
           <div class="flex flex-col items-center">
-            <img class="w-24 object-cover aspect-square mb-3 rounded-full shadow-lg" src="../../../../assets/ImportantImg/bot.gif" alt="Bonnie image" />
+            <img class="w-24 object-cover  border-2 border-primary shadow-primary/90 aspect-square mb-3 rounded-full shadow-lg" src="../../../../assets/Images/bot.gif" alt="Bonnie image" />
             <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Google Gemini</h5>
             <span class="text-sm text-gray-500 dark:text-gray-400">Chat Ai</span>
             <div class="flex px-5 text-center mt-4 md:mt-6">
@@ -52,19 +52,19 @@
       <div class=" row-span-4 p-2 ">
 
         <div class="card flex justify-content-center">
-          <p-chart height="200px" type="doughnut" [data]="data" [options]="options"></p-chart>
+          <!-- <p-chart height="200px" type="doughnut" [data]="data" [options]="options"></p-chart> -->
       </div>
 
       </div>
     </div>
-    <div class="grid h-full  col-span-4 md:col-span-3  grid-rows-10">
-      <div class="bg-white row-span-1">
+    <div class="grid h-full  col-span-4 md:col-span-3  grid-rows-10 border-2 border-white">
+      <div class="bg-secondary row-span-1">
         <div class="flex items-center justify-between px-2 py-2">
           <div class="flex-shrink-0">
-            <img class="w-[3rem] aspect-square object-cover rounded-full" [src]="'../../../../assets/ImportantImg/bot.gif'" alt="bot image">
+            <img class="w-[3rem] aspect-square object-cover rounded-full" [src]="'../../../../assets/Images/bot.gif'" alt="bot image">
           </div>
           <div class="flex-1 min-w-0 ms-4">
-            <p class="text-sm font-bold text-secondary truncate ">
+            <p class="text-sm font-bold text-primary truncate ">
               Gemini
             </p>
             <p class="text-sm text-lime-500 truncate ">
@@ -74,9 +74,9 @@
 
         </div>
       </div>
-      <div class="bg-base row-span-8  h-[32rem] " #ChatArea>
+      <div class="bg-gradient-to-r from-secondary to-blue-950 row-span-8  h-[32rem] " #ChatArea>
         @if(messages$| async ){
-          <div class="bg-base chat-area h-[100%]">
+          <div class=" chat-area h-[100%]">
             <div
             *ngFor="let message of messages$ | async "
             [ngClass]="{ sender: message.user === 'User1' }"
@@ -104,24 +104,28 @@
 
         }
       </div>
-      <div class=" row-span-1 bg-white flex justify-center items-center w-fll px-2 border-t-2 border-t-secondaryS3">
+      <div class=" row-span-1 bg-secondary flex justify-center items-center w-fll px-2 border-t-2 border-t-secondaryS3">
+        <div class="flex items-center w-full ">
 
-        <form class="flex items-center w-full">
-          <div class="relative w-full flex">
-             <img (click)="selectImg.click()" src="../../../../assets/icons/UploadImgIcon.png" alt="" class="mx-2 w-[2.3rem] aspect-square cursor-pointer ">
-             <input hidden #selectImg type="file" class="form-control" accept="image/*" (change)="showPreview($event)" >
-
-
-
-            <input type="text" id="simple-search" name="query" (keydown.enter)="getdata(input.value)" #input
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="type.." required autocomplete="off">
-
+  
+          <div class=" w-full">
+            <input
+              type="text"
+              id="simple-search"
+              (keydown.enter)="getdata(input.value)" #input
+              class="bg-white border shadow-lg shadow-primary/50 border-primary text-secondary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full  p-2.5"
+              placeholder="type..."
+              required autocomplete="off"
+            />
           </div>
-          <button type="submit" class="p-2.5 ms-2   bg-primary rounded-full  hover:bg-primaryS2 "  >
-            <img src="../../../../assets/icons/sendicon.png" alt="call" class="w-[1.5rem]">
+          <button
+            class="p-2 px-3 ms-2 bg-white rounded-full shadow-lg shadow-primary/50  hover:bg-primary"
+         
+          >
+          <i class="pi pi-send  text-sm text-secondary" ></i>
           </button>
-        </form>
+        </div>
+     
 
       </div>
     </div>

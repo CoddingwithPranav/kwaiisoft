@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import {AngularFireAuth} from  '@angular/fire/compat/auth';
 import {GoogleAuthProvider, Auth, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword} from  '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { Observable, from } from 'rxjs';
+import { Observable, from, tap } from 'rxjs';
 import { HotToastService } from '@ngneat/hot-toast';
 import { UserService } from './user.service';
 import { Firestore, addDoc, collection, doc, setDoc } from '@angular/fire/firestore';
@@ -103,7 +103,8 @@ export class AuthService {
         success: 'Logged in successfully',
         loading: 'Logging in...',
         error:'Incorrect Data'
-      })
+      }),
+      tap(()=> this.router.navigate(['kwaii/home']))
     );
   }
   logout(): Observable<any> {

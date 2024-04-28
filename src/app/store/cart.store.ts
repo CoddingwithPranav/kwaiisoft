@@ -84,7 +84,7 @@ export const CartStore = signalStore(
                 next: (res) =>{
                   const updatedProducts = [...products(), product];
                   patchState(store, { products:updatedProducts});
-                  hotToastService.success('Product removed');
+                  hotToastService.success('Successfully Added to Cart');
                 },
                 error: (err:string) => {
                   patchState(store);

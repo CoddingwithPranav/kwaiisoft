@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 :root{
-  $primary:#00F407;
+  
+}
+$primary:#00F407;
   $secondary: #001122;
   $base:#e8e8e8;
-}
 body {
   margin: 0;
   padding: 0;
@@ -48,7 +49,16 @@ body {
   input:focus-visible{
     outline: none;
   }
+  .p-autocomplete-dd .p-autocomplete-input{
+    padding: 5px !important;
 }
+
+.p-autocomplete-dropdown{
+  background-color: $primary !important;
+}
+}
+
+
 
 /* For WebKit (Chrome, Safari) */
 ::-webkit-scrollbar {

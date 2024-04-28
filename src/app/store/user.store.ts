@@ -24,18 +24,19 @@ export const initialUserState:userState={
     { providedIn: 'root'},
     withState(initialUserState),
  
-    withMethods(({ user,cart , ...store }, Service = inject(UserService), hotToastService = inject(HotToastService)) => ({
+    withMethods(({ user,cart, wishlist , ...store }, Service = inject(UserService), hotToastService = inject(HotToastService)) => ({
       loadUser: rxMethod<string>(
           pipe(
             switchMap(() => {
               return Service.loadProfileObs().pipe(
                 tapResponse({
                   next: (userDetails) =>{
-                    patchState(store, { user:userDetails.user , cart:userDetails.cart })
+                    patchState(store, { user:userDetails.user , cart:userDetails.cart, wishlist:userDetails.wishlist })
                   },
                   error: (err) => {
+                    hotToastService.error("Unable to connect with Server")
                     patchState(store);
-                    console.error(err);
+                    
                   },
                 })
               );

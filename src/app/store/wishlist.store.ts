@@ -70,7 +70,7 @@ export const wishListStore = signalStore(
                 next: (res) =>{
                   const updatedProducts = [...products(), product];
                   patchState(store, { products:updatedProducts});
-                  hotToastService.success('Product removed');
+                  hotToastService.success('Product Added to Wishlist');
                 },
                 error: (err:string) => {
                   patchState(store);

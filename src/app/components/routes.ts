@@ -25,6 +25,12 @@ export  const LoggedIN_ROUTES: Route[] = [
       },
       {path:'product/:id',
       loadComponent:()=>import('./kawiiMerch/product-view/product-view.component').then((a)=>a.ProductViewComponent)
+      },
+      {path:'chat',
+      loadComponent:()=>import('./kawiiChatt/kawii-chatt/kawii-chatt.component').then((a)=>a.KawiiChattComponent)
+      },
+      {path:'gemini',
+      loadComponent:()=>import('./geminichat/gemini-chat/gemini-chat.component').then((a)=>a.GeminiChatComponent)
       }
     ]},
 

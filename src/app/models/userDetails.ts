@@ -3,5 +3,6 @@ import { ProfileUser } from "./user";
 
 export interface userDetails{
     user:ProfileUser,
-    cart:Product[]
+    cart:Product[],
+    wishlist:Product[]
 }

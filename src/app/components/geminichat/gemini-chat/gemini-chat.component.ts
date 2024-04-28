@@ -2,15 +2,13 @@ import { Component, ElementRef, Renderer2, ViewChild, inject } from '@angular/co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { BootomNavigationComponent } from '../../../shared/bootom-navigation/bootom-navigation.component';
-import { initFlowbite } from 'flowbite';
 import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { AiService } from '../../../services/ai.service';
-import { ChartModule } from 'primeng/chart';
 import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-gemini-chat',
   standalone: true,
-  imports: [FormsModule,AsyncPipe, NgIf, BootomNavigationComponent, ChartModule,NgFor, NgClass],
+  imports: [FormsModule,AsyncPipe, NgIf, BootomNavigationComponent,NgFor, NgClass],
   templateUrl: './gemini-chat.component.html',
   styleUrl: './gemini-chat.component.scss'
 })
@@ -31,35 +29,31 @@ export class GeminiChatComponent {
   selectedImg:any = ''
   options: any;
   ngOnInit(): void {
-    if (typeof document !== 'undefined') {
+    // const documentStyle = getComputedStyle(document.documentElement);
+    // const textColor = documentStyle.getPropertyValue('--text-color');
 
-      initFlowbite();
-    }
-    const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--text-color');
-
-    this.data = {
-        labels: ['A', 'B', 'C'],
-        datasets: [
-            {
-                data: [300, 50, 100],
-                backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
-                hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
-            }
-        ]
-    };
+    // this.data = {
+    //     labels: ['A', 'B', 'C'],
+    //     datasets: [
+    //         {
+    //             data: [300, 50, 100],
+    //             backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
+    //             hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+    //         }
+    //     ]
+    // };
 
 
-    this.options = {
-        cutout: '60%',
-        plugins: {
-            legend: {
-                labels: {
-                    color: textColor
-                }
-            }
-        }
-    };
+    // this.options = {
+    //     cutout: '60%',
+    //     plugins: {
+    //         legend: {
+    //             labels: {
+    //                 color: textColor
+    //             }
+    //         }
+    //     }
+    // };
 }
 
 

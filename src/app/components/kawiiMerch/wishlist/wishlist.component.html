@@ -20,6 +20,7 @@
         @for (item of wishlistStore.products(); track $index) {
         <app-card
           [item]="item"
+          (handlerAdd)="addToCart($event)"
           (handlerwishList)="removeWishlist($event)"
         ></app-card>
         }

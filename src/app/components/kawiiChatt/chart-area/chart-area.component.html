@@ -1,12 +1,12 @@
-<div class="flex flex-col h-[40.2rem] md:h-[40.2rem]">
+<div class="flex flex-col h-[78vh] md:h-[40.2rem] w-[100vw]  md:w-[100%]  border-2 md:border-white ">
   @if (this.selectedChat$|async ) {
   <div
-    class="bg-white h-[10%]"
+    class="bg-white border-2 border-secondary h-[10%]"
     *ngIf="this.selectedChat$ | async as selectedChat"
   >
     <div class="flex items-center justify-between px-2 py-2">
       <div class="flex-shrink-0">
-        <button (click)="viewProfile()">
+        <button (click)="viewProfile()" class=" rounded-full shadow-lg shadow-primary/50">
           <img
           class="w-[3rem] h-[3rem] rounded-full cursor-pointer"
           [src]="
@@ -18,8 +18,8 @@
         </button>
       </div>
       <div class="flex-1 min-w-0 ms-4">
-        <p class="text-sm font-bold text-secondary truncate">David</p>
-        <p class="text-sm text-lime-500 truncate">active</p>
+        <p class="text-sm font-bold text-secondary truncate">{{ selectedChat.chatName}}</p>
+        <p class="text-sm text-green-600 truncate">active</p>
       </div>
       <div class="md:hidden">
         <ng-content></ng-content>
@@ -27,7 +27,8 @@
 
     </div>
   </div>
-  <div class="bg-base chat-area h-[80%]">
+  <div class=" chat-area h-[80%] bg-secondary/90">
+
     <ng-container *ngIf="user$ | async as currentUser">
       <div
         *ngFor="let message of message$ | async"
@@ -44,41 +45,36 @@
   </div>
 
   <div
-    class="h-[10%] bg-white flex justify-center items-center w-fll px-2 border-t-2 border-t-secondaryS3"
+    class="h-[10%]  bg-white flex justify-center items-center  px-2 border-t-2 border-t-white"
   >
 
-    <div class="flex items-center w-full">
+    <div class="flex items-center w-full ">
 
-      <div
-        class=""
-      >
-      <button #btn type="button" pButton label="Toggle" (click)="menu.toggle($event)" class="mx-3">
-       <img src="../../../../assets/icons/plusIcon.png" alt="plus" class="aspect-square rounded-full w-[3rem] md:w-[2rem] "></button>
-      <p-tieredMenu #menu [model]="items" [popup]="true"></p-tieredMenu>
-      </div>
+  
       <div class=" w-full">
         <input
           type="text"
           id="simple-search"
           [formControl]="messageControl"
           (keydown.enter)="sendMessage()"
-          class="bg-white border border-primaryS1 text-secondary text-sm rounded-lg focus:ring-primaryS1 focus:border-primaryS1 block w-full ps-10 p-2.5"
+          class="bg-white border shadow-lg shadow-primary/50 border-primary text-secondary text-sm rounded-lg focus:ring-primary focus:border-primary block w-full  p-2.5"
           placeholder="type..."
           required autocomplete="off"
         />
       </div>
       <button
-        class="p-2.5 ms-2 bg-primary rounded-full hover:bg-primaryS2"
+        class="p-2 px-3 ms-2 bg-white rounded-full shadow-lg shadow-primary/50  hover:bg-primary"
         (click)="sendMessage()"
       >
-        <img
-          src="../../../../assets/icons/sendicon.png"
-          alt="call"
-          class="w-[1.5rem]"
-        />
+      <i class="pi pi-send  text-sm text-secondary" ></i>
       </button>
     </div>
   </div>
+  }
+  @else{
+    <div class="w-full h-full flex justify-center items-center">
+      <span class="text-white text-3xl">Start a Chat 😎</span>
+    </div>
   }
 </div>
 
@@ -99,7 +95,7 @@ class=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 md:left-[40%] z-50
       <img  class="aspect-square w-[6rem] rounded-full"
       [src]="
       selectedChat.chatpic ??
-      '../../../../assets/AnimeIMG/orange.webp'
+      ''
     "
     alt="Profile image">
 
@@ -111,28 +107,6 @@ class=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 md:left-[40%] z-50
       <p>I am web Developer 😎</p>
     </div>
     <div class="mt-2">
-
-
-<div class="flex items-center mb-5">
-  <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-  </svg>
-  <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-  </svg>
-  <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-  </svg>
-  <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-  </svg>
-  <svg class="w-4 h-4 text-gray-300 me-1 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-  </svg>
-  <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">4.95</p>
-  <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">out of</p>
-  <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
-</div>
 
     </div>
   </div>

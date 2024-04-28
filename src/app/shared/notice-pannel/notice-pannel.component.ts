@@ -1,5 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { UserStore } from '../../store/user.store';
 
 @Component({
   selector: 'app-notice-pannel',
@@ -9,5 +10,5 @@ import { Component } from '@angular/core';
   styleUrl: './notice-pannel.component.scss'
 })
 export class NoticePannelComponent {
-
+userStore = inject(UserStore)
 }
