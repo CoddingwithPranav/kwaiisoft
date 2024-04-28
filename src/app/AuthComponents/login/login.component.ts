@@ -41,9 +41,9 @@ export class LoginComponent {
     this.authService
     .login( email, password)
     .subscribe((res) => {
-      console.log(res)
       localStorage.setItem('token', JSON.stringify(res.user.uid));
       this.authService.loggedInUser = res.user;
+      
       
     },
     err=>{

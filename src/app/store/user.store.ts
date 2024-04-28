@@ -34,7 +34,7 @@ export const initialUserState:userState={
                     patchState(store, { user:userDetails.user , cart:userDetails.cart, wishlist:userDetails.wishlist })
                   },
                   error: (err) => {
-                    hotToastService.error("Unable to connect with Server")
+                    // hotToastService.error("Unable to connect with Server")
                     patchState(store);
                     
                   },

@@ -18,7 +18,7 @@
           <div class="relative">
             <div class="relative">
               <input formControlName="displayName" name="displayName" type="text"  id="outlined_success0" aria-describedby="outlined_success_help" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-secondary bg-transparent rounded-lg border border-secondary appearance-none dark:text-white dark:border-secondary dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-              <label for="outlined_success0" class="absolute text-sm text-secondary dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email address</label>
+              <label for="outlined_success0" class="absolute text-sm text-secondary dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Display Name</label>
           </div>
           </div>
           @if (this.displayName?.errors?.['required'] && this.displayName?.touched ) {
@@ -56,11 +56,10 @@
   
     </form>
    <div class="grid grid-cols-1 content-center">
-    <button class="text-right  text-sm md:text-md text-secondaryS2"[routerLink]="'/forget-password'">Forget Password?</button>
-    <p class=" text-center text-sm mt-2 mb-4  text-secondary/65 ">or sign in with</p>
+    <p class=" text-center text-sm mt-2 mb-4  text-secondary/65 ">or sign up with</p>
     <button (click)="signWithGoogle()" type="button" class=" bg-base hover:bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 flex flex-row justify-center items-center focus:ring-primary   rounded-full text-sm px-5 py-2 text-center me-2   mb-4 "><img src="../../../assets/Svg/icon-google.svg" class="h-6 md:h-8" alt="google" ><span class=" text-secondary pl-[2rem]  ">Login with Google</span></button>
     <!-- <button type="button" class=" bg-base hover:bg-gray-100 text-gray-800 focus:outline-none focus:ring-2 flex flex-row justify-start items-center focus:ring-primary   rounded-full text-sm px-5 py-2 text-center me-2 mb-2 "><img src="../../../../assets/icons/icon-facebook.svg" class="h-8" alt="google" ><span class="text-md text-secondary pl-[6rem] ">Login with Facebook</span></button> -->
-    <button class="text-center text-sm underline underline-offset-2 text-secondaryS1"[routerLink]="'/register'"><span class="text-secondary/80">Don't have an account?</span><span class="font-bold text-secondary"> SIGN Up</span></button>
+    <button class="text-center text-sm underline underline-offset-2 text-secondaryS1"[routerLink]="'/auth/login'"><span class="text-secondary/80">Have a account?</span><span class="font-bold text-secondary"> SIGN IN</span></button>
   
    </div>
   
