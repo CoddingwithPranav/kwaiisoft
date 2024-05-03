@@ -1,6 +1,7 @@
 
   <div class="w-[100%] flex flex-row relative   ">
-    <img ngSrc="../../../assets/Svg/blob-scene-haikei.svg"  alt="background" width="100" height="100" priority class="h-[100%] w-[100%] object-cover fixed top-0 z-0 ">
+
+    <img  [ngSrc]="themeService.backgroundImgPath().homeBackground"  alt="background" width="100" height="100" priority class="h-[100%] w-[100%] object-cover fixed top-0 z-0  ">
       <div class="hidden md:flex md:w-[10%] h-[100%] justify-center flex-col items-center  ">
         <div  class="flex-col items-center fixed top-4 z-20"><app-side-navigation/></div>
   

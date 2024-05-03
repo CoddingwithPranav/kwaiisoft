@@ -10,5 +10,8 @@ export const routes: Routes = [
     {path: 'auth', 
     loadChildren: () => import('./AuthComponents/auth.routes').then((a)=>a.LoggedOUT_ROUTES)
     },
+    {path: '**', 
+     redirectTo:'kwaii/home'
+    },
   
 ];

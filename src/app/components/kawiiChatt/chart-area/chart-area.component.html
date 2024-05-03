@@ -1,7 +1,7 @@
-<div class="flex flex-col h-[78vh] md:h-[40.2rem] w-[100vw]  md:w-[100%]  border-2 md:border-white ">
+<div class="flex flex-col h-[100vh] md:h-[40.2rem] w-[100vw]  md:w-[100%]  border-2 md:border-white ">
   @if (this.selectedChat$|async ) {
   <div
-    class="bg-white border-2 border-secondary h-[10%]"
+    class="bg-white border-2 border-secondary "
     *ngIf="this.selectedChat$ | async as selectedChat"
   >
     <div class="flex items-center justify-between px-2 py-2">
@@ -27,7 +27,7 @@
 
     </div>
   </div>
-  <div class=" chat-area h-[80%] bg-secondary/90">
+  <div class=" chat-area h-[27rem] bg-secondary/90 overflow-y-scroll">
 
     <ng-container *ngIf="user$ | async as currentUser">
       <div
@@ -45,7 +45,7 @@
   </div>
 
   <div
-    class="h-[10%]  bg-white flex justify-center items-center  px-2 border-t-2 border-t-white"
+    class="h-[10%] fixed bottom-16  md:static md:bottom-0 w-full bg-white flex justify-center items-center  px-2 border-t-2 border-t-white"
   >
 
     <div class="flex items-center w-full ">

@@ -5,7 +5,7 @@
   <div class= " bg-secondary backdrop-blur-sm flex justify-center items-center h-auto">
 
     <div class="bg-white min-h-[100vh] relative p-10 w-[92%] md:w-[98%] flex flex-col items-center justify-evenly   " >
-      <img ngSrc="../../../assets/Svg/Cloudy.svg"priority height="200" width="600" class="absolute top-0 object-cover h-[30%] md:h-[50%] w-[100%]">
+      <img [ngSrc]="themeService.backgroundImgPath().profileBackgound" priority height="200" width="600" class="absolute top-0 object-cover h-[26%] md:h-[34%] w-[100%]">
      <h2 class="text-white font-bold text-xl z-10">Update Profile</h2>
      <button
      type="button"
@@ -14,7 +14,7 @@
    >
    <i class="pi pi-power-off mr-1 font-bold text-red-500 text-sm md:text-lg" ></i>Logout
    </button>
-     <form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="w-[100%] my-3" >
+     <form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="w-[100%] my-3 h-[100%]" >
        <div class="flex flex-col justify-center items-center mb-5 md:mb-[5rem] ">
          <div class="h-[125px] w-[125px] md:h-[9rem] md:w-[9rem] ">
            <app-profile (click)="selectImg.click()" [showActiveIcon]="false" [isEdit]="true" [url]="imgSrc !=''?imgSrc: UserStore.user().profileImg"></app-profile>
@@ -29,8 +29,8 @@
          <div class="md:h-[4rem] w-[100%] ">
            <div class="relative">
              <div class="relative">
-               <input [(ngModel)]="UserStore.user().displayName" formControlName="displayName" name="displayName"  type="text"  id="outlined_success" aria-describedby="outlined_success_help" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-secondary bg-transparent rounded-lg border-2 border-secondary  appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-               <label for="displayName" class="absolute text-lg text-secondary dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Display Name</label>
+               <input [(ngModel)]="UserStore.user().displayName" formControlName="displayName" name="displayName"  type="text"  id="outlined_success" aria-describedby="outlined_success_help" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-secondary bg-transparent rounded-lg border-2 border-secondary  appearance-none peer" placeholder=" " />
+               <label for="displayName" class="absolute text-lg text-secondary  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Display Name</label>
            </div>
            </div>
            @if (this.fs['displayName'].errors?.['required'] && this.fs['displayName'].touched ) {
@@ -41,8 +41,8 @@
          <div class="h-[4rem] w-[100%] ">
            <div class="relative">
              <div class="relative">
-               <input [(ngModel)]="UserStore.user().name" formControlName="name" name="name"  type="text"  id="outlined_success" aria-describedby="outlined_success_help" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-secondary bg-transparent rounded-lg border-2 border-secondary appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-               <label for="name" class="absolute text-lg text-secondary dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Name</label>
+               <input [(ngModel)]="UserStore.user().name" formControlName="name" name="name"  type="text"  id="outlined_success" aria-describedby="outlined_success_help" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-secondary bg-transparent rounded-lg border-2 border-secondary appearance-none peer" placeholder=" " />
+               <label for="name" class="absolute text-lg text-secondary duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white  px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Name</label>
            </div>
            </div>
            @if (this.fs['name'].errors?.['required'] && this.fs['name'].touched ) {
@@ -53,8 +53,8 @@
          <div class="h-[4rem] w-[100%] ">
            <div class="relative">
              <div class="relative">
-               <input [(ngModel)]="UserStore.user().email" formControlName="email" name="email"  type="email"  id="outlined_success" aria-describedby="outlined_success_help" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-secondary bg-transparent rounded-lg border-2 border-secondary appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-               <label for="name" class="absolute text-lg text-secondary dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email </label>
+               <input [(ngModel)]="UserStore.user().email" formControlName="email" name="email"  type="email"  id="outlined_success" aria-describedby="outlined_success_help" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-secondary bg-transparent rounded-lg border-2 border-secondary appearance-none  peer" placeholder=" " />
+               <label for="name" class="absolute text-lg text-secondary duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Email </label>
            </div>
            </div>
            @if (this.fs['email'].errors?.['required'] && this.fs['email'].touched ) {
@@ -67,15 +67,18 @@
          <div class="h-[4rem] w-[100%] ">
            <div class="relative">
              <div class="relative">
-               <input [(ngModel)]="UserStore.user().phone" formControlName="phone" name="phone"  type="text"  id="outlined_success" aria-describedby="outlined_success_help" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-secondary bg-transparent rounded-lg border-2 border-secondary appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-               <label for="phone" class="absolute text-lg text-secondary dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Phone Number</label>
+               <input [(ngModel)]="UserStore.user().phone" formControlName="phone" name="phone"  type="text"  id="outlined_success" aria-describedby="outlined_success_help" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-secondary bg-transparent rounded-lg border-2 border-secondary appearance-none  peer" placeholder=" " />
+               <label for="phone" class="absolute text-lg text-secondary  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white 0 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">Phone Number</label>
            </div>
            </div>
            @if (this.fs['phone'].errors?.['required'] && this.fs['phone'].touched ) {
              <p id="filled_success_help" class="mt-2 text-xs text-red-600 "> Phone Number is required</p>
            }
          </div>
-
+         
+        </div>
+        <div class="grid grid-cols-1 mt-[2rem]  ">
+          <app-theme-mode></app-theme-mode>
         </div>
         <div class="grid grid-cols-1 mt-[2rem]  w-[80%] mx-auto ">
          <div class="h-[4rem] w-[100%] grid justify-items-center content-center ">

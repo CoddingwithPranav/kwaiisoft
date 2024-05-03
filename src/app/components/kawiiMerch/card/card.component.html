@@ -33,7 +33,7 @@
 
 
 <div class="container overflow-hidden rounded-xl relative flex m-4  justify-between flex-col " style="width: 300px; min-height: 26rem;">
-   <img class="absolute cursor-pointer backimg top-0 transition ease-in-out delay-150 hover:-translate-y-8 hover:scale-110" (click)="viewProduct(item.id)" [ngSrc]="item.productImgPath ? item.productImgPath : '../../../assets/default.jpg'" width="400" height="200" priority>
+   <img class="absolute cursor-pointer backimg top-0 transition ease-in-out delay-150 hover:-translate-y-8 hover:scale-110" (click)="viewProduct(item.id)" [ngSrc]="item.productImgPath ? item.productImgPath : '../../../assets/default.jpg'" width="400" height="200" >
    <div class="head flex justify-between mx-2">
     <div class="like relative">
       <app-heart (click)="handleProductWishlist(item)" [iswishListed]="item.IsWishlisted || false" ></app-heart>

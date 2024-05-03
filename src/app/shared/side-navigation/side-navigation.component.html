@@ -36,10 +36,10 @@
    </div>
    <div class=" relative flex justify-between h-1/2  "[routerLink]="'wishlist'">
 
-    <i class="pi pi-heart-fill m-auto h-10 text-white" style="font-size: 1.9rem" ></i>
+    <i class="pi pi-heart-fill m-auto h-10 " style="font-size: 1.9rem; color:white" ></i>
      @if ((userStore.wishlist().length > 0)) {
       <div
-      class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full top-1 -end-1 dark:border-gray-900">
+      class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full top-1 -end-1">
       {{userStore.wishlist().length}}</div>
      }
 

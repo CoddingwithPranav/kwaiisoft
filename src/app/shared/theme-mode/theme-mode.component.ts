@@ -1,28 +1,18 @@
-import { Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, inject } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-theme-mode',
   standalone: true,
-  imports: [],
+  imports: [ CommonModule],
   templateUrl: './theme-mode.component.html',
-  styleUrl: './theme-mode.component.scss'
+  styleUrl: './theme-mode.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ThemeModeComponent {
-  isDarkMode = false;
+  
 
-  constructor(private darkModeService: ThemeService) {}
+  themeService = inject(ThemeService);
 
-  ngOnInit() {
-    if (typeof document !== 'undefined') {
-    this.darkModeService.isDarkMode$.subscribe((isDark) => {
-      this.isDarkMode = isDark;
-      document.body.classList.toggle('dark', isDark); // Toggle dark class on body
-    });
-  }
-  }
-
-  toggleDarkMode() {
-    this.darkModeService.toggleDarkMode();
-  }
+ 
 }

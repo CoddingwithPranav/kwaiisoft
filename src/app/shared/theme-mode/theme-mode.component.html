@@ -1,3 +1,13 @@
-<button (click)="toggleDarkMode()">Toggle Dark Mode</button>
+<div>
+    <h2 class="text-lg text-secondary my-3 font-bold">Theme</h2>
+    <div class="flex flex-row justify-start gap-9">
 
-<div class="text-white dark:text-black">This text changes color in dark mode.</div>
+        <div class="bg-[#4FACF7] rounded-lg   w-[15rem] h-[10rem] relative cursor-pointer border-8 border-[#83c5fc]" (click)="check1.click()" >
+        <input  #check1 id type="radio" name="theme" class= "rounded-full h-5 w-5 absolute bottom-0 right-0 bg-transparent " (click)="themeService.settheme('secondtheme')">
+        </div>
+        <div class="bg-[#001122]  rounded-lg  w-[15rem] h-[10rem] relative cursor-pointer border-8 border-[#00F407]"  (click)="check2.click()" >
+        <input #check2 type="radio" name="theme" class= "rounded-full h-5 w-5 absolute bottom-0 right-0 bg-transparent " (click)="themeService.settheme('primarytheme')">
+        </div>
+        
+    </div>
+</div>

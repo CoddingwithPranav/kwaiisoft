@@ -8,10 +8,19 @@ import { AuthService } from '../../services/auth.service';
 import { BootomNavigationComponent } from '../../shared/bootom-navigation/bootom-navigation.component';
 import { UserStore } from '../../store/user.store';
 import { Router } from '@angular/router';
+import { ThemeModeComponent } from '../../shared/theme-mode/theme-mode.component';
+import { ThemeService } from '../../services/theme.service';
 @Component({
   selector: 'app-profile-info',
   standalone: true,
-  imports: [ProfileComponent,FormsModule, ReactiveFormsModule,NgOptimizedImage,  NgIf, AsyncPipe, BootomNavigationComponent],
+  imports: [ProfileComponent,
+    FormsModule, 
+    ReactiveFormsModule,
+    NgOptimizedImage, 
+     NgIf, 
+     AsyncPipe,
+      BootomNavigationComponent,
+      ThemeModeComponent],
   templateUrl: './profile-info.component.html',
   styleUrl: './profile-info.component.scss'
 })
@@ -23,7 +32,8 @@ export class ProfileInfoComponent {
   imgSrc:any ='';
   profileForm!:FormGroup;
   selectedImg:any;
-  router = inject(Router)
+  router = inject(Router);
+  themeService = inject(ThemeService)
 
   logout(){
     this.router.navigate(['auth/login']);

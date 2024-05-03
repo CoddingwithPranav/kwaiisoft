@@ -31,7 +31,7 @@ totalPrice$!:Observable<number>;
 
     const {id:productId} = updatedProduct
 
-    this.wishlistStore.addWishListProducts({productId, product:updatedProduct})
+    this.cartStore.RemoveCartProducts({productId, product:updatedProduct})
  }
 
 

@@ -1,10 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
-:root{
-  
+:root {
+  --primary:#00F407;
+  --secondary: #001122;
+  --base:#e8e8e8;
+  --selectedBuuton:#03002b;
+
+  .text-white{
+    color: white;
+  }
 }
-$primary:#00F407;
-  $secondary: #001122;
-  $base:#e8e8e8;
+
+.secondtheme{
+  --primary:#4FACF7;
+  --secondary: #011220;
+  --base:#E4E4E4;
+  --selectedBuuton:#002e53;
+  // .text-white{
+  //   color: black;
+  // }
+}
+// .dark{
+//   --primary:#07cf93;
+//   --secondary: #00614c;z
+//   // --secondary: #034e53;
+//   --base:#e8e8e8;
+//   --selectedBuuton:#024849;
+// }
+
 body {
   margin: 0;
   padding: 0;
@@ -54,9 +76,11 @@ body {
 }
 
 .p-autocomplete-dropdown{
-  background-color: $primary !important;
+  background-color: var(--primary)!important;
 }
 }
+
+
 
 
 
