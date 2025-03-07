@@ -34,23 +34,24 @@
 
 <div class="container overflow-hidden rounded-xl relative flex m-4  justify-between flex-col " style="width: 300px; min-height: 26rem;">
    <img class="absolute cursor-pointer backimg top-0 transition ease-in-out delay-150 hover:-translate-y-8 hover:scale-110" (click)="viewProduct(item.id)" [ngSrc]="item.productImgPath ? item.productImgPath : '../../../assets/default.jpg'" width="400" height="200" >
-   <div class="head flex justify-between mx-2">
+  <div class="head flex justify-between mx-2">
     <div class="like relative">
       <app-heart (click)="handleProductWishlist(item)" [iswishListed]="item.IsWishlisted || false" ></app-heart>
     </div>
     <div class="discount relative">
-      <span class="bg-green-100 absolute top-[1.5rem]  right-[0px]  flex text-green-800 text-xs font-medium me-2 px-2.5 py-2 rounded-3xl  w-[max-content] border border-green-400">  
-        <i class="pi pi-star-fill h-5 w-5 text-green-500 font-bold" ></i>
-        14.29% off</span>
+      <span class="bg-green-100 absolute top-[1.5rem] right-[0px] flex text-green-800 text-xs font-medium me-2 px-2.5 py-2 rounded-3xl w-[max-content] border border-green-400">
+        <i class="pi pi-star-fill h-5 w-5 text-green-500 font-bold"></i>
+        {{ calculateDiscountPercentage(item.price, item.discount) }}% off
+      </span>
     </div>
-   </div>
+  </div>
 
    <div class="content p-5 border-primary border-2 flex items-center flex-col  rounded-xl bg-white   backdrop-blur-sm">
     <div class="text-center  text-secondary font-bold text-2xl mb-2 cursor-pointer hover:text-primaryS1 " (click)="viewProduct(item.id)">{{item.title}}-- {{item.Incart}}</div>
     <div class="flex justify-centerz">  <span class="ml-1">${{item.price}}</span>
       <span class=" decoration-slice ml-1" >${{item.discount+ item.price}}</span></div>
       <a [ngClass]="{'Incart':item.Incart}" class="mt-2 font-bold rounded-full py-2 w-[12rem] bg-primary text-secondary  hover:bg-gray-300   text-center cursor-pointer " (click)="handleProductAdd(item)" > {{item.Incart? 'Added To cart':'Add To cart'}}</a>
-   </div>
+  </div>
 
 </div>
 

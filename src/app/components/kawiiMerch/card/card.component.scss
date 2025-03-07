@@ -1,9 +1,14 @@
 
 .backimg{
   aspect-ratio: 2/3;
-  height: 25rem;
+  height: 17rem;
 }
 .Incart{
    background-color: var(--selectedBuuton) ;
    color: white;
+}
+
+.title{
+  max-height: 2rem;
+  overflow: hidden;
 }

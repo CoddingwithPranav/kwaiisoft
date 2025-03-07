@@ -14,15 +14,28 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 export class ProductViewComponent  {
   id!:string ;
   productStore = inject(ProductStore)
- 
+
   constructor(private route:ActivatedRoute) {
     this.route.params.subscribe((res:any)=>{
       this.id = res.id
   })
-  this.productStore.loadOneProducts(this.id);
-}
+    this.productStore.loadOneProducts(this.id);
+  }
+  calculateDiscountPercentage(
+    originalPrice: number,
+    discountAmount: number
+  ): string {
+    if (
+      !originalPrice ||
+      !discountAmount ||
+      discountAmount < 0 ||
+      discountAmount > originalPrice
+    ) {
+      return '0'; // Return 0% if invalid values
+    }
 
-
-  
+    const percentage = (discountAmount / originalPrice) * 100;
+    return percentage.toFixed(2); // Returns percentage with 2 decimal places
+  }
 
 }

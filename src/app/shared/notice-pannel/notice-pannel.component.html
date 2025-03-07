@@ -30,8 +30,8 @@
     </svg>
     <div class="w-[35vw] md:w-[10rem]  h-full  z-10 flex  flex-col   items-center">
       <div class="flex flex-col justify-center items-center w-full h-[11rem] ">
-        <span class="text-[1.rem] mb-0">Oct, 2024</span>
-        <span class="text-[2rem] mt-[-0.5rem]">02</span>
+        <span class="text-[1rem] mb-0">{{ getMonthName() }}, {{ currentDate.getFullYear() }}</span>
+        <span class="text-[2rem] mt-[-0.5rem]">{{ getFormattedDay() }}</span>
       </div>
       <div
         class="w-[80px] h-[90px] md:w-[6rem] md:h-[6rem] mr-4 flex justify-center items-center bg-primary rounded-full">

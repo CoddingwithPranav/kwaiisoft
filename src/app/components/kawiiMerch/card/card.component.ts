@@ -21,19 +21,20 @@ export class CardComponent {
   handleProductAdd(Product: Product) {
     this.handlerAdd.emit(Product);
   }
-  
+
   handleProductWishlist(product: Product) {
-      this.handlerwishList.emit(product);
-  }
- 
-
-  ngOnInit(){
-
-
+    this.handlerwishList.emit(product);
   }
 
+  viewProduct(id: string) {
+    this.router.navigate(['kwaii/product/', id]);
+  }
 
-  viewProduct(id:string){
-    this.router.navigate(['kwaii/product/', id])
+  calculateDiscountPercentage(originalPrice: number, discountAmount: number): string {
+    if (!originalPrice || !discountAmount || discountAmount < 0 || discountAmount > originalPrice) {
+      return '0';
+    }
+    const percentage = (discountAmount / (originalPrice + discountAmount)) * 100; // Fixed calculation
+    return percentage.toFixed(2);
   }
 }
